@@ -14,9 +14,9 @@ namespace Negocio.Models.Mapping
             this.Property(t => t.Nombre)
                 .HasMaxLength(250);
 
-            this.Property(t => t.Imagen)
-                .IsFixedLength()
-                .HasMaxLength(8000);
+            //this.Property(t => t.Imagen)
+            //    .IsFixedLength()
+            //    .HasMaxLength(8000);
 
             // Table & Column Mappings
             this.ToTable("Producto");
