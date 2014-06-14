@@ -130,6 +130,7 @@
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\NegocioController.cs" />
+    <Compile Include="Controllers\OfertaController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\SubCategoriaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,27 +138,33 @@
     </Compile>
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Comprador.cs" />
+    <Compile Include="Models\DetalleOferta.cs" />
     <Compile Include="Models\DetallePedido.cs" />
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\FormaEntrega.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Mapping\CategoriaMap.cs" />
     <Compile Include="Models\Mapping\CompradorMap.cs" />
+    <Compile Include="Models\Mapping\DetalleOfertaMap.cs" />
     <Compile Include="Models\Mapping\DetallePedidoMap.cs" />
     <Compile Include="Models\Mapping\EstadoMap.cs" />
     <Compile Include="Models\Mapping\FormaEntregaMap.cs" />
     <Compile Include="Models\Mapping\ItemMap.cs" />
     <Compile Include="Models\Mapping\NegocioMap.cs" />
+    <Compile Include="Models\Mapping\OfertaMap.cs" />
     <Compile Include="Models\Mapping\PedidoMap.cs" />
     <Compile Include="Models\Mapping\ProductoMap.cs" />
     <Compile Include="Models\Mapping\SubCategoriaMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
     <Compile Include="Models\Mapping\TipoEntregaMap.cs" />
     <Compile Include="Models\Mapping\VentaMap.cs" />
     <Compile Include="Models\Negocio.cs" />
     <Compile Include="Models\NegocioContext.cs" />
+    <Compile Include="Models\Oferta.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\SubCategoria.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TipoEntrega.cs" />
     <Compile Include="Models\Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,6 +291,11 @@
     <Content Include="Views\Negocio\Create.cshtml" />
     <Content Include="Views\Negocio\Edit.cshtml" />
     <Content Include="Views\Negocio\Delete.cshtml" />
+    <Content Include="Views\Oferta\Index.cshtml" />
+    <Content Include="Views\Oferta\Details.cshtml" />
+    <Content Include="Views\Oferta\Create.cshtml" />
+    <Content Include="Views\Oferta\Edit.cshtml" />
+    <Content Include="Views\Oferta\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

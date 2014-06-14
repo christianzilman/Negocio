@@ -1,0 +1,95 @@
+﻿@model Negocio.Models.Oferta
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Oferta</legend>
+
+        <div class="editor-label">
+            Descripcion:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descripcion)
+            @Html.ValidationMessageFor(model => model.Descripcion)
+        </div>
+
+        <div class="editor-label">
+            Fecha:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaDesde)
+            @Html.ValidationMessageFor(model => model.FechaDesde)
+        </div>
+
+        <div class="editor-label">
+            Fecha:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaHasta)
+            @Html.ValidationMessageFor(model => model.FechaHasta)
+        </div>
+
+        <div class="editor-label">
+            Total:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Total)
+            @Html.ValidationMessageFor(model => model.Total)
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Precio</td>
+                    <td>Cantidad</td>
+                    <td>Operacion</td>
+                </tr>                
+                @{IList<Negocio.Models.Producto> products = ViewBag.Products;}
+                @foreach (Negocio.Models.Producto item in products)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.PrecioVenta</td>
+                        <td><input id="_@item.ProductoId" value="1"/></td>
+                        <td><input type="button" value="Agregar" onclick="javascript:agregarProducto(@item.ProductoId,'@item.Nombre',$('#_@item.ProductoId').val());" /></td>
+                    </tr>
+                }
+            </table>
+            <div id="detalleOferta">
+                
+            </div>
+
+        </div>
+        
+
+        <script type="text/javascript"> 
+            function agregarProducto(productoId,descripcion,cantidad)
+            {
+                $("#"+productoId+"D").remove();
+                $("#detalleOferta").append("<p id='"+productoId+"D'><input type='hidden'  name='DetalleOfertaId'  value='"+productoId+"'/> <input name='DetalleOfertaCantidad' value='"+cantidad+"' />  Descripcion:"+descripcion + " Cantidad:"+cantidad + " </p>");
+                //$("#detalleOferta").append                
+            }
+        </script>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
