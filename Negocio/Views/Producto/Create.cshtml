@@ -4,92 +4,101 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
-<form action="@Url.Content("~/Producto/Create")" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Producto</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nombre)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nombre)
-            @Html.ValidationMessageFor(model => model.Nombre)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PrecioCompra)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PrecioCompra)
-            @Html.ValidationMessageFor(model => model.PrecioCompra)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Cantidad)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Cantidad)
-            @Html.ValidationMessageFor(model => model.Cantidad)
-        </div>
-
-
-        Imagen:<input type="file" name="File" id="File" />
-
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FechaActualizacion)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FechaActualizacion)
-            @Html.ValidationMessageFor(model => model.FechaActualizacion)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ItemId, "Item")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ItemId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ItemId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NegocioId, "Negocio")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("NegocioId", String.Empty)
-            @Html.ValidationMessageFor(model => model.NegocioId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PrecioVenta)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PrecioVenta)
-            @Html.ValidationMessageFor(model => model.PrecioVenta)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Destacado)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Destacado)
-            @Html.ValidationMessageFor(model => model.Destacado)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-    </form>
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Producos</h2>
     </div>
+    <div class="panel-body">
+        <div class="col-md-3">
+
+            <form action="@Url.Content("~/Producto/Create")" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Nombre)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Nombre)
+                        @Html.ValidationMessageFor(model => model.Nombre)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PrecioCompra)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.PrecioCompra)
+                        @Html.ValidationMessageFor(model => model.PrecioCompra)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Cantidad)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Cantidad)
+                        @Html.ValidationMessageFor(model => model.Cantidad)
+                    </div>
+                    
+                    <div class="editor-label"><h4>Imagen</h4></div>
+                    <input type="file" class="btn-success" name="File" id="File" />
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FechaActualizacion)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FechaActualizacion)
+                        @Html.ValidationMessageFor(model => model.FechaActualizacion)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.ItemId, "Item")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("ItemId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ItemId)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.NegocioId, "Negocio")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("NegocioId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.NegocioId)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PrecioVenta)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.PrecioVenta)
+                        @Html.ValidationMessageFor(model => model.PrecioVenta)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Destacado)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Destacado)
+                        @Html.ValidationMessageFor(model => model.Destacado)
+                    </div>
+
+                    <p>
+                        <input type="submit" class="btn-primary" value="Crear" />
+                    </p>
+                </fieldset>
+            </form>
+
+            <div>
+                @Html.ActionLink("Volver al listado", "Index")
+            </div>
+
+        </div>
+    </div>
+</div>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
