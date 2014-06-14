@@ -7,6 +7,7 @@ namespace Negocio.Models
     {
         public Producto()
         {
+            this.DetalleOfertas = new List<DetalleOferta>();
             this.DetallePedidoes = new List<DetallePedido>();
         }
 
@@ -20,6 +21,7 @@ namespace Negocio.Models
         public Nullable<int> NegocioId { get; set; }
         public Nullable<double> PrecioVenta { get; set; }
         public Nullable<int> Destacado { get; set; }
+        public virtual ICollection<DetalleOferta> DetalleOfertas { get; set; }
         public virtual ICollection<DetallePedido> DetallePedidoes { get; set; }
         public virtual Item Item { get; set; }
         public virtual Negocio Negocio { get; set; }
