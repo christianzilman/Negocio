@@ -8,18 +8,25 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h2 class="panel-title">Producos</h2>
+        <h2 class="panel-title">Productos</h2>
     </div>
     <div class="panel-body">
         <div class="col-md-3">
-            <div>    Descripcion: @Html.DisplayFor(model => model.Nombre) </div>
-            <div>    Precio: @Html.DisplayFor(model => model.PrecioVenta)</div>
-            <div>    Negocio: @Html.DisplayFor(model => model.Negocio.Nombre)</div>
-            <div>    Stock: @Html.DisplayFor(model => model.Cantidad)</div>
+            <div style="font-weight: bold">  Descripción: </div>
+            <div>@Html.DisplayFor(model => model.Nombre)</div>
+            <br />
+            <div style="font-weight: bold">    Precio: </div>
+            <div>$ @Html.DisplayFor(model => model.PrecioVenta)</div>
+            <br />
+            <div style="font-weight: bold">    Negocio: </div>
+            <div>@Html.DisplayFor(model => model.Negocio.Nombre)</div>
+            <br />
+            <div style="font-weight: bold">    Stock: </div>
+            <div>@Html.DisplayFor(model => model.Cantidad)</div>
             <br />
             <div>
                 @Html.ActionLink("Editar", "Edit", new { id = Model.ProductoId }) |
-                @Html.ActionLink("Volver al listado", "Index")
+                @Html.ActionLink("Volver", "Index")
             </div>
         </div>
     </div>

@@ -4,51 +4,63 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Datos a Editar de la Oferta</h2>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+            <fieldset>
+                
+                @Html.HiddenFor(model => model.OfertaId)
 
-    <fieldset>
-        <legend>Oferta</legend>
+                <div style="font-weight: bold">
+                    Descripción:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Descripcion)
+                    @Html.ValidationMessageFor(model => model.Descripcion)
+                </div>
+                <br />
+                <div style="font-weight: bold">
+                    Vigencia desde:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.FechaDesde)
+                    @Html.ValidationMessageFor(model => model.FechaDesde)
+                </div>
+                <br />
+                <div style="font-weight: bold">
+                    Hasta:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.FechaHasta)
+                    @Html.ValidationMessageFor(model => model.FechaHasta)
+                </div>
+                <br />
+                <div style="font-weight: bold">
+                    Total:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Total)
+                    @Html.ValidationMessageFor(model => model.Total)
+                </div>
+                <br />
+                <p>
+                    <input type="submit" class="btn-primary" value="Guardar" />
+                </p>
+            </fieldset>
+        }
 
-        @Html.HiddenFor(model => model.OfertaId)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Descripcion)
+        <div>
+            @Html.ActionLink("Volver", "Index")
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Descripcion)
-            @Html.ValidationMessageFor(model => model.Descripcion)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FechaDesde)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FechaDesde)
-            @Html.ValidationMessageFor(model => model.FechaDesde)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Total)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Total)
-            @Html.ValidationMessageFor(model => model.Total)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

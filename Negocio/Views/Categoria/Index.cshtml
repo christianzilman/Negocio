@@ -3,31 +3,35 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Categorias</h2>
+    </div>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Cargar Nueva Categoria", "Create")
+        </p>
+        <table class="table">
+            <tr class="info">
+                <th>
+                    Listado de Categorias
+                 </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.CategoriaId }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.CategoriaId }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.CategoriaId })
+                        </td>
+                    </tr>
+                }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoriaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoriaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoriaId })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+ </div>

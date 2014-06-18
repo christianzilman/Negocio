@@ -4,59 +4,54 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Ofertas</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Ofertas</h2>
+    </div>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Crear Nueva Oferta", "Create")
+        </p>
+        <table class="table">
+            <tr class="info">
+                <th>
+                    Descripción:
+                </th>
+                <th>
+                    Vigencia Desde
+                </th>
+                <th>
+                    Hasta
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th></th>
+                
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
 
-<p>
-    @Html.ActionLink("Crear Nueva Oferta", "Create")
-</p>
-<table class="table">
-   <tr class="info">
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-       <th colspan="2">
-           Vigencia
-       </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-       <th></th>
-    </tr>
-    <tr class="info">
-       <th></th>
-       <th>
-           Desde
-       </th>
-       <th>
-           Hasta
-       </th>
-       <th></th>
-       <th></th>
-    </tr>
-   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaDesde)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHasta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.OfertaId }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.OfertaId }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.OfertaId })
+                    </td>
+                </tr>
+            }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaDesde)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaHasta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OfertaId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OfertaId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OfertaId })
-            </td>
-        </tr>
-    }
-
-</table>
+        </table>
+    </div>
+</div>

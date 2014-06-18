@@ -7,7 +7,7 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h2 class="panel-title">Edición de Productos</h2>
+        <h2 class="panel-title">Datos a editar del Producto</h2>
     </div>
     <div class="panel-body">
         <div class="col-md-3">
@@ -20,56 +20,56 @@
                
                     @Html.HiddenFor(model => model.ProductoId)
 
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Nombre)
+                    <div style="font-weight: bold">
+                        Producto:
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.Nombre)
                         @Html.ValidationMessageFor(model => model.Nombre)
                     </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.PrecioCompra)
+                    <br />
+                    <div style="font-weight: bold">
+                        Precio de Compra:
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.PrecioCompra)
                         @Html.ValidationMessageFor(model => model.PrecioCompra)
                     </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.Cantidad)
+                    <br />
+                    <div style="font-weight: bold">
+                        Stock:
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.Cantidad)
                         @Html.ValidationMessageFor(model => model.Cantidad)
                     </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.FechaActualizacion)
+                    <br />
+                    <div style="font-weight: bold">
+                        Fecha de Actualización:
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.FechaActualizacion)
                         @Html.ValidationMessageFor(model => model.FechaActualizacion)
                     </div>
-
+                    
                     <div class="editor-label">
-                        @Html.LabelFor(model => model.ItemId, "Item")
+                        @Html.LabelFor(model => model.ItemId, "Item:")
                     </div>
                     <div class="editor-field">
                         @Html.DropDownList("ItemId", String.Empty)
                         @Html.ValidationMessageFor(model => model.ItemId)
                     </div>
-
+                    
                     <div class="editor-label">
-                        @Html.LabelFor(model => model.NegocioId, "Negocio")
+                        @Html.LabelFor(model => model.NegocioId, "Negocio:")
                     </div>
                     <div class="editor-field">
                         @Html.DropDownList("NegocioId", String.Empty)
                         @Html.ValidationMessageFor(model => model.NegocioId)
                     </div>
-
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.PrecioVenta)
+                    <br />
+                    <div style="font-weight: bold">
+                        Precio de Venta:
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.PrecioVenta)
@@ -82,7 +82,7 @@
 
 
                     <div>
-                        @Html.ActionLink("Volver al listado", "Index")
+                        @Html.ActionLink("Volver", "Index")
                     </div>
                 </fieldset>
             }

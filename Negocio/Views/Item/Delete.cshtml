@@ -4,30 +4,36 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">¿Esta usted seguro que desea eliminar este Item?</h2>
+    </div>
+    <div class="panel-body">
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Item</legend>
+        <fieldset>
+            
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Nombre)
+            </div>
+            <br />
+            <div style="font-weight: bold">
+                Perteneciente a la Sub-Categoria:
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SubCategoria.Nombre)
+            </div>
+        </fieldset>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" class="btn-primary" value="Eliminar" /> 
+            </p>
+            <p>
+                @Html.ActionLink("Volver", "Index")
+            </p>
+        }
+    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.SubCategoria.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SubCategoria.Nombre)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+</div>

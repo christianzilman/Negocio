@@ -3,24 +3,27 @@
 @{
     ViewBag.Title = "Delete";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Categoria</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Categoria</h2>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
+    <div class="panel-body">
+        <h3>¿Esta usted seguro que desea eliminar esta categoria?</h3>
+        <fieldset>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Nombre)
+            </div>
+            <br />
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" class="btn-primary" value="Eliminar" /> 
+            </p>
+    <div>
+        @Html.ActionLink("Volver", "Index")
     </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+        }
+    </div>
+</div>

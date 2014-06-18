@@ -3,27 +3,28 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
-<fieldset>
-    <legend>SubCategoria</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Nombre)
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Detalle de la Sub-Categoria</h2>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Nombre)
+    <div class="panel-body">
+        <fieldset>
+            
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Nombre)
+            </div>
+            <br />
+            <div style="font-weight: bold">
+                Pertenece a la Categoria:
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Categoria.Nombre)
+            </div>
+        </fieldset>
+        <br />
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.SubCategoriaId }) |
+            @Html.ActionLink("Volver", "Index")
+        </p>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Categoria.Nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Categoria.Nombre)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.SubCategoriaId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

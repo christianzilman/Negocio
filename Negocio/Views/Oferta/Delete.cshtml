@@ -3,38 +3,52 @@
 @{
     ViewBag.Title = "Delete";
 }
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">¿Esta usted seguro que desea eliminar esta Oferta?</h2>
+    </div>
+    <div class="panel-body">
+           
+        <fieldset>
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Oferta</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Descripcion)
+            <div style="font-weight: bold">
+                Descripción:
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Descripcion)
+            </div>
+            <br />
+            <div style="font-weight: bold">
+                Vigencia desde:
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.FechaDesde)
+            </div>
+            <br />
+            <div style="font-weight: bold">
+                Hasta:
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.FechaHasta)
+            </div>
+            <br />
+            <div style="font-weight: bold">
+                Total:
+            </div>
+            <div class="display-field">
+                $ @Html.DisplayFor(model => model.Total)
+            </div>
+            <br />
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" class="btn-primary" value="Eliminar" /> 
+            </p>
+            <p>
+                @Html.ActionLink("Volver", "Index")
+            </p>
+        }
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Descripcion)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Fecha)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Fecha)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Total)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Total)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+</div>

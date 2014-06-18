@@ -3,44 +3,49 @@
 @{
     ViewBag.Title = "Edit";
 }
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">Datos a editar de la Sub-Categoria</h2>
+    </div>
+    <div class="panel-body">
 
-<h2>Edit</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+            <fieldset>
+               
+                @Html.HiddenFor(model => model.SubCategoriaId)
 
-    <fieldset>
-        <legend>SubCategoria</legend>
+                <div style="font-weight: bold">
+                    Sub-Categoria
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Nombre)
+                    @Html.ValidationMessageFor(model => model.Nombre)
+                </div>
 
-        @Html.HiddenFor(model => model.SubCategoriaId)
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CategoriaId, "Categoria")
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("CategoriaId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.CategoriaId)
+                </div>
+                <br />
+                <p>
+                    <input type="submit" class="btn-primary" value="Guardar" />
+                </p>
+            </fieldset>
+        }
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nombre)
+        <div>
+            @Html.ActionLink("Volver", "Index")
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nombre)
-            @Html.ValidationMessageFor(model => model.Nombre)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CategoriaId, "Categoria")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("CategoriaId", String.Empty)
-            @Html.ValidationMessageFor(model => model.CategoriaId)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
