@@ -20,9 +20,37 @@ namespace Negocio.Controllers
         //
         // GET: /Producto/
 
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var productoes = db.Productoes.Include(p => p.Item).Include(p => p.Negocio);
+        //    return View(productoes.ToList());
+        //}
+
+        public ActionResult Index(string sortOrder, string searchString)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";
             var productoes = db.Productoes.Include(p => p.Item).Include(p => p.Negocio);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productoes = productoes.Where(p => p.Nombre.ToUpper().Contains(searchString.ToUpper()));
+                //students = students.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())
+                //                       || s.FirstMidName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    productoes = productoes.OrderByDescending(p => p.Nombre);
+                    break;
+                case "price_desc":
+                    productoes = productoes.OrderByDescending(p => p.PrecioVenta);
+                    break;
+                default:
+                    productoes = productoes.OrderBy(p => p.Nombre);
+                    break;
+            }
             return View(productoes.ToList());
         }
 

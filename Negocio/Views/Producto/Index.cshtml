@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Negocio.Models.Producto>
 
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "Productos";
 }
 
 <div class="panel panel-primary">
@@ -44,6 +44,7 @@
                 <th></th>
             </tr>
 
+<<<<<<< HEAD
             @foreach (var item in Model)
             {
                 <tr>
@@ -86,3 +87,99 @@
     </div>
 </div>
       
+=======
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title">@Html.ActionLink("Crear Nuevo Producto", "Create")</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
+                <div>
+                    Buscar productos: @Html.TextBox("SearchString")
+                    <input type="submit" class="btn-primary" value="Buscar!" />
+                </div>
+            }
+            <br/>
+            <table class="table">
+                <tr class="info">
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Nombre)*@
+                        @Html.ActionLink("Descripción", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecioCompra)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaActualizacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Item.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Negocio.Nombre)
+                    </th>
+                    <th>
+                        <b> @Html.ActionLink("Precio de Venta", "Index", new { sortOrder = ViewBag.PriceSortParm })</b>
+                        @*@Html.DisplayNameFor(model => model.PrecioVenta)*@
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Destacado)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            <img src="data:image;base64,@System.Convert.ToBase64String(item.Imagen)" width="80" height="80" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecioCompra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaActualizacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Negocio.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecioVenta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Destacado)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ProductoId }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.ProductoId }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.ProductoId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+>>>>>>> 04bbe3029b205cf2e3a0cf01628c27106b677dab
