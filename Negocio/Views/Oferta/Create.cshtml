@@ -42,26 +42,32 @@
                         @Html.EditorFor(model => model.FechaHasta)
                         @Html.ValidationMessageFor(model => model.FechaHasta)
                     </div>
+                    
+                        <div>
+                            Buscar productos: @Html.TextBox("SearchString")
+                            <input type="submit" class="btn-primary" value="Buscar!" />
+                        </div>
 
-                    <div class="editor-field">
-                        <table class="table">
-                            <tr class="info">
-                                <td>Productos</td>
-                                <td>Precio</td>
-                                <td>Cantidad</td>
-                                <td>Operacion</td>
-                            </tr>
-                            @{IList<Negocio.Models.Producto> products = ViewBag.Products;}
-                            @foreach (Negocio.Models.Producto item in products)
-                            {
-                                <tr>
-                                    <td>@item.Nombre</td>
-                                    <td>@item.PrecioVenta</td>
-                                    <td><input id="_@item.ProductoId" value="1" /></td>
-                                    <td><input type="button" value="Agregar" onclick="javascript:agregarProducto(@item.ProductoId,'@item.Nombre',$('#_@item.ProductoId').val());" /></td>
+                        <div class="editor-field">
+                            <table class="table">
+                                <tr class="info">
+                                    <td>@Html.ActionLink("Productos", "Create", new { sortOrder = ViewBag.NameSortParm })</td>
+                                    <td><b> @Html.ActionLink("Precio", "Create", new { sortOrder = ViewBag.PriceSortParm })</b></td>
+                                    <td>Cantidad</td>
+                                    <td>Operacion</td>
                                 </tr>
-                            }
-                        </table>
+                                @{IList<Negocio.Models.Producto> products = ViewBag.Products;}
+                                @foreach (Negocio.Models.Producto item in products)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.PrecioVenta</td>
+                                        <td><input id="_@item.ProductoId" value="1" /></td>
+                                        <td><input type="button" value="Agregar" onclick="javascript:agregarProducto(@item.ProductoId,'@item.Nombre',$('#_@item.ProductoId').val());" /></td>
+                                    </tr>
+                                }
+                            </table>
+                    
                         <div id="detalleOferta">
                            
                         </div>
@@ -74,7 +80,7 @@
                         @Html.EditorFor(model => model.Total)
                         @Html.ValidationMessageFor(model => model.Total)
                     </div>
-
+                    
                     <script type="text/javascript">
 
                         function agregarProducto(productoId, descripcion, cantidad) {

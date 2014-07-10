@@ -10,6 +10,8 @@ using System.IO;
 using System.Drawing;
 using System.Data.Entity.Validation;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Negocio.Controllers
 {
@@ -81,16 +83,22 @@ namespace Negocio.Controllers
         public class ModelProducto 
         {
             public int ProductoId { get; set; }
+            [Required(ErrorMessage = "Debe Ingresar un Producto")]
             public string Nombre { get; set; }
+            [Required(ErrorMessage = "Debe Ingresar un Precio")]
             public Nullable<double> PrecioCompra { get; set; }
+            [Required(ErrorMessage = "Debe Ingresar una Cantidad")]
             public Nullable<int> Cantidad { get; set; }
+            [Required(ErrorMessage = "Debe Ingresar una Fecha")]
             public Nullable<System.DateTime> FechaActualizacion { get; set; }
             //public byte[] Imagen { get; set; }
             public HttpPostedFileBase File {get;set;}
+            [Required(ErrorMessage = "Debe Seleccionar un Item")]
             public int ItemId { get; set; }
+            [Required(ErrorMessage = "Debe Seleccionar un Negocio")]
             public Nullable<int> NegocioId { get; set; }
+            [Required(ErrorMessage = "Debe Ingresar un Precio")]
             public Nullable<double> PrecioVenta { get; set; }
-
             public Nullable<int> Destacado { get; set; }
             public Item Item { get; set; }
             public Negocio.Models.Negocio Negocio { get; set; }

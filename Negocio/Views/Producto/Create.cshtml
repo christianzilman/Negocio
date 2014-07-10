@@ -10,7 +10,7 @@
         <h2 class="panel-title">Productos</h2>
     </div>
     <div class="panel-body">
-        <div class="col-md-3">
+        <div class="col-md-4">
 
             <form action="@Url.Content("~/Producto/Create")" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
@@ -27,11 +27,34 @@
                     </div>
                     <br />
                     <div style="font-weight: bold">
+                        Item:
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("ItemId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ItemId)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.NegocioId, "Negocio:")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("NegocioId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.NegocioId)
+                    </div>
+                    <br />
+                    <div style="font-weight: bold">
                         Precio de Compra:
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.PrecioCompra)
                         @Html.ValidationMessageFor(model => model.PrecioCompra)
+                    </div>
+                    <br />
+                    <div style="font-weight: bold">
+                        Precio de Venta:
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.PrecioVenta)
+                        @Html.ValidationMessageFor(model => model.PrecioVenta)
                     </div>
                     <br />
                     <div style="font-weight: bold">
@@ -54,30 +77,6 @@
                     <div class="editor-field">
                         @Html.EditorFor(model => model.FechaActualizacion)
                         @Html.ValidationMessageFor(model => model.FechaActualizacion)
-                    </div>
-                    <br />
-                    <div style="font-weight: bold">
-                        Item:
-                    </div>
-                    <div class="editor-field">
-                        @Html.DropDownList("ItemId", String.Empty)
-                        @Html.ValidationMessageFor(model => model.ItemId)
-                    </div>
-                    <br />
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.NegocioId, "Negocio:")
-                    </div>
-                    <div class="editor-field">
-                        @Html.DropDownList("NegocioId", String.Empty)
-                        @Html.ValidationMessageFor(model => model.NegocioId)
-                    </div>
-                    <br />
-                    <div style="font-weight: bold">
-                        Precio de Venta:
-                    </div>
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.PrecioVenta)
-                        @Html.ValidationMessageFor(model => model.PrecioVenta)
                     </div>
                     <br />
                     <div style="font-weight: bold">

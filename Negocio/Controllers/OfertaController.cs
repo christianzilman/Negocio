@@ -6,6 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Negocio.Models;
+using System.IO;
+using System.Drawing;
+using System.Data.Entity.Validation;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Negocio.Controllers
 {
@@ -37,12 +42,41 @@ namespace Negocio.Controllers
         //
         // GET: /Oferta/Create
 
-        public ActionResult Create()
+        //public ActionResult Create()
+        //{
+        //    IList<Producto> products = db.Productoes.ToList<Producto>();
+        //    ViewBag.Products = products;
+        //    return View();
+        //}
+        public ActionResult Create(string sortOrder, string searchString)
         {
-            IList<Producto> products = db.Productoes.ToList<Producto>();
-            ViewBag.Products = products;
-            return View();
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";
+            var productoes = db.Productoes.Include(p => p.Item).Include(p => p.Negocio);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                productoes = productoes.Where(p => p.Nombre.ToUpper().Contains(searchString.ToUpper()));
+                //students = students.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())
+                //                       || s.FirstMidName.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    productoes = productoes.OrderByDescending(p => p.Nombre);
+                    break;
+                case "price_desc":
+                    productoes = productoes.OrderByDescending(p => p.PrecioVenta);
+                    break;
+                default:
+                    productoes = productoes.OrderBy(p => p.Nombre);
+                    break;
+            }
+            
+            return View(productoes.ToList());
         }
+
 
         //
         // POST: /Oferta/Create

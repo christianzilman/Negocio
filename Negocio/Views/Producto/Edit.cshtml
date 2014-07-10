@@ -27,17 +27,12 @@
                         @Html.EditorFor(model => model.Nombre)
                         @Html.ValidationMessageFor(model => model.Nombre)
                     </div>
-<<<<<<< HEAD
                     <br />
                     <div style="font-weight: bold">
                         Precio de Compra:
-=======
+                    </div>
                     <div>
                         @*<img src="data:image;base64,@System.Convert.ToBase64String(Imag model => model.Imagen)" width="80" height="80" />*@
-                    </div>
-                    <div class="editor-label">
-                        @Html.LabelFor(model => model.PrecioCompra)
->>>>>>> 04bbe3029b205cf2e3a0cf01628c27106b677dab
                     </div>
                     <div class="editor-field">
                         @Html.EditorFor(model => model.PrecioCompra)
@@ -59,7 +54,6 @@
                         @Html.EditorFor(model => model.FechaActualizacion)
                         @Html.ValidationMessageFor(model => model.FechaActualizacion)
                     </div>
-                    
                     <div class="editor-label">
                         @Html.LabelFor(model => model.ItemId, "Item:")
                     </div>
@@ -67,7 +61,6 @@
                         @Html.DropDownList("ItemId", String.Empty)
                         @Html.ValidationMessageFor(model => model.ItemId)
                     </div>
-                    
                     <div class="editor-label">
                         @Html.LabelFor(model => model.NegocioId, "Negocio:")
                     </div>
